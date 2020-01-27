@@ -18,13 +18,13 @@ class UserUpdateForm(forms.ModelForm):
 
     class Meta:
         model = User
-        fields = ['username', 'email']
+        fields = ['first_name', 'last_name']
 
 
 class ProfileUpdateForm(forms.ModelForm):
     class Meta:
         model = Profile
-        fields = ['first_name', 'last_name', 'bio', 'location', 'birth_date', 'image']
+        fields = [ 'bio', 'location', 'birth_date', 'image']
 
 
 class FeedbackForm(forms.ModelForm):
