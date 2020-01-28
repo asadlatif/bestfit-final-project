@@ -26,9 +26,9 @@ class ProfileUpdateForm(forms.ModelForm):
     #birth_date = forms.DateField(input_formats=settings.DATE_INPUT_FORMATS)
     class Meta:
         model = Profile
-        fields = [ 'birth_date','bio', 'location',  'image']
+        fields = [ 'birth_date','bio', 'location','gender', 'image']
         labels = {
-            'birth_date': ('D.O.B'),
+            'birth_date': ('Dath of Birth'),
         }
         widgets = {
         'birth_date': DateInput(attrs={'type': 'date'})

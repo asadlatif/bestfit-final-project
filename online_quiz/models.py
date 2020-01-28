@@ -17,6 +17,9 @@ class Test(models.Model):
 
 class Profile(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE)
+    gender_choice = (("Male", "Male"), ("Female", "Female"),("other", "other"))
+    education_choices = (("Matric", "Matric"), ("Intermediate", "Intermediate"),("Diploma", "Diploma"), ("Master", "Master"), ("PHD", "PHD"))
+    gender = models.CharField(max_length=10, choices=gender_choice, default=True)
     image = models.ImageField(default='default.jpg', upload_to='profile_pics')
     first_name = models.CharField(max_length=100, blank=True)
     last_name = models.CharField(max_length=100, blank=True)
