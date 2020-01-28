@@ -121,3 +121,5 @@ MEDIA_URL = '/media/'
 LOGIN_REDIRECT_URL = 'home'
 LOGOUT_REDIRECT_URL = 'home'
 LOGIN_URL = 'login'
+
+DATE_INPUT_FORMATS = ['%d-%m-%Y']

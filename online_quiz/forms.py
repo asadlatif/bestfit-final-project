@@ -3,6 +3,8 @@ from django.contrib.auth.forms import User
 from django.contrib.auth.forms import UserCreationForm
 from .models import Profile
 from .models import Feedbackk
+from bestfit import settings
+from django.forms.widgets import DateInput
 
 
 class UserSignupForm(UserCreationForm):
@@ -14,7 +16,6 @@ class UserSignupForm(UserCreationForm):
 
 
 class UserUpdateForm(forms.ModelForm):
-    email = forms.EmailField()
 
     class Meta:
         model = User
@@ -22,9 +23,16 @@ class UserUpdateForm(forms.ModelForm):
 
 
 class ProfileUpdateForm(forms.ModelForm):
+    #birth_date = forms.DateField(input_formats=settings.DATE_INPUT_FORMATS)
     class Meta:
         model = Profile
-        fields = [ 'bio', 'location', 'birth_date', 'image']
+        fields = [ 'birth_date','bio', 'location',  'image']
+        labels = {
+            'birth_date': ('D.O.B'),
+        }
+        widgets = {
+        'birth_date': DateInput(attrs={'type': 'date'})
+    }
 
 
 class FeedbackForm(forms.ModelForm):
