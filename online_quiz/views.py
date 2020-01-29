@@ -110,7 +110,7 @@ def feedback(request):
         form = FeedbackForm(request.POST)
         if form.is_valid():
             form.save()
-            messages.success(request, f'Your feddback has been Noted! Thanks for giving us your reviews!')
+            messages.success(request, f'Your feedback has been Noted! Thanks for giving us your reviews!')
             return redirect('feedback')
     else:
         form = FeedbackForm()

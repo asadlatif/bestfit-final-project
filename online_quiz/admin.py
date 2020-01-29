@@ -9,6 +9,8 @@ from django.urls import path
 class TestAdmin(admin.ModelAdmin):
     list_display = ('question', "option_1", "option_2", 'option_3', 'option_4', "answer")
 
+class questionAdmin(admin.ModelAdmin):
+    list_filter = ('qustion', 'answer')
 
 admin.site.register(Test, TestAdmin)
 admin.site.register(Profile)

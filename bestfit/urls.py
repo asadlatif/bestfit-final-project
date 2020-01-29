@@ -17,7 +17,7 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('feedback/', views.feedback, name= 'feedback'),
     path('test/<int:myid>', views.test_page, name= 'test'),
-    path('test/result', views.result, name= 'result'),
+    path('result/', views.result, name= 'result'),
     path('profile/', views.profile, name='profile'),
     path('profileEdit/', views.profileEdit, name='profileEdit'),
 ]
