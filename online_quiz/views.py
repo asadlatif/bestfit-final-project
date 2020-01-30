@@ -7,7 +7,6 @@ from .models import Test,Feedbackk
 from django.contrib import messages
 from .forms import UserSignupForm, UserUpdateForm,FeedbackForm, ProfileUpdateForm
 
-
 def home(request):
     count = User.objects.count()
     return render(request, 'home.html', {
@@ -118,3 +117,5 @@ def feedback(request):
         'form': form
     })
     return render(request, 'Review.html')
+
+

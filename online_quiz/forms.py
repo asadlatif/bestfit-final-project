@@ -40,4 +40,15 @@ class FeedbackForm(forms.ModelForm):
         model = Feedbackk
         fields = ['name','email','phone','Feedback']
 
+# class UserResultForm(forms.ModelForm):
+#     class Meta:
+#         model = User
+#         fields = ['first_name', 'last_name']
+
+# class ResultUpdateForm(UserResultForm):
+
+#     class Meta:
+#         model = Results
+#         fields = ['attempt_correct', 'time']
+
         
