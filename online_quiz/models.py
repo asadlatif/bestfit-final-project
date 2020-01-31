@@ -52,7 +52,3 @@ class ResultsPredictions(models.Model):
     attempt_correct = models.CharField(max_length=100)
     time = models.CharField(max_length=50)
 
-
-class reporting(models.Model):
-    user_profile = models.OneToOneField(Profile,on_delete=models.CASCADE)
-    user_result = models.OneToOneField(ResultsPredictions,on_delete=models.CASCADE)
