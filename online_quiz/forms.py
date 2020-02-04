@@ -1,9 +1,8 @@
 from django import forms
 from django.contrib.auth.forms import User
 from django.contrib.auth.forms import UserCreationForm
-from .models import Profile
-from .models import Feedbackk
 from bestfit import settings
+from .models import Profile, Feedbackk
 from django.forms.widgets import DateInput
 
 
@@ -23,7 +22,7 @@ class UserUpdateForm(forms.ModelForm):
 
 
 class ProfileUpdateForm(forms.ModelForm):
-    #birth_date = forms.DateField(input_formats=settings.DATE_INPUT_FORMATS)
+    
     class Meta:
         model = Profile
         fields = [ 'birth_date','bio', 'location','gender', 'image']
@@ -40,15 +39,5 @@ class FeedbackForm(forms.ModelForm):
         model = Feedbackk
         fields = ['name','email','phone','Feedback']
 
-# class UserResultForm(forms.ModelForm):
-#     class Meta:
-#         model = User
-#         fields = ['first_name', 'last_name']
-
-# class ResultUpdateForm(UserResultForm):
-
-#     class Meta:
-#         model = Results
-#         fields = ['attempt_correct', 'time']
 
         

@@ -17,10 +17,10 @@ def update_profile(sender, instance, created, **kwargs):
 
     if created ==   False:
         instance.profile.save()
-        # print("Profile Updated")
-        # try:
-        #     instance.profile.save()
-        #     print("Profile Updated")
-        # except:
-        #     Profile.objects.create(user=instance)
-        #     print("Profile Created for Existing user")
+        print("Profile Updated")
+        try:
+            instance.profile.save()
+            print("Profile Updated")
+        except:
+            Profile.objects.create(user=instance)
+            print("Profile Created for Existing user")

@@ -36,11 +36,14 @@ class ProfileAdmin(admin.ModelAdmin):
         'first_name', 
         'last_name', 
         'location', 
-        'gender'
+        'gender',
+        'birth_date',
+        'image',
         )
     search_fields = (
         '^first_name', 
-        '^last_name', 
+        '^last_name',
+        'location',
         )
     list_filter = (
         'first_name', 
@@ -50,16 +53,7 @@ class ProfileAdmin(admin.ModelAdmin):
         )
 
 
-# class questionAdmin(admin.ModelAdmin):
-#     list_filter = ('qustion', 'answer')
-
 admin.site.register(Test, TestAdmin)
 admin.site.register(Profile, ProfileAdmin)
 admin.site.register(Feedbackk)
 admin.site.register(ResultsPredictions)
-# # admin.site.site_header = 'BestFit Organization'
-# admin.site.index_title = 'BestFit Administration'
-# admin.site.site_title = 'Admin pannel of bestfit organization'
-# admin.site.index_template = 'admin/index_template.html'
-
-
