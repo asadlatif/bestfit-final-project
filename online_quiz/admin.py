@@ -11,7 +11,10 @@ class ProfileAdmin(admin.ModelAdmin):
     list_display = ('first_name', 'last_name', 'location', 'gender')
 
 class reportingAdmin(admin.ModelAdmin):
-    list_display= ( 'first_name', 'last_name', 'location', 'gender', 'attempt_correct', 'time')
+    list_display= ( 'first_name', 'last_name', 'gender', 'attempt_correct', 'time')
+    def profile_foo(self, x):
+        return x.profile.foo
+    profile_foo.short_description = 'foo'
 
 # class questionAdmin(admin.ModelAdmin):
 #     list_filter = ('qustion', 'answer')
@@ -19,7 +22,8 @@ class reportingAdmin(admin.ModelAdmin):
 admin.site.register(Test, TestAdmin)
 admin.site.register(Profile, ProfileAdmin)
 admin.site.register(Feedbackk)
-admin.site.register(reporting, reportingAdmin)
+admin.site.register(reporting)
+# admin.site.register(proField)
 admin.site.register(ResultsPredictions)
 # # admin.site.site_header = 'BestFit Organization'
 # admin.site.index_title = 'BestFit Administration'

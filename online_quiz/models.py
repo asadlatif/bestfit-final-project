@@ -12,11 +12,10 @@ class Test(models.Model):
     option_2 = models.CharField(max_length=255)
     option_3 = models.CharField(max_length=255)
     option_4 = models.CharField(max_length=255)
-    answer = models.CharField(max_length=255, default=None)
-
+    answer = models.CharField(max_length=255, default=None) 
 
 class Profile(models.Model):
-    user = models.OneToOneField(User, on_delete=models.CASCADE)
+    user = models.OneToOneField(User, primary_key=True,on_delete=models.CASCADE)
     gender_choice = (("Male", "Male"), ("Female", "Female"),("other", "other"))
     education_choices = (("Matric", "Matric"), ("Intermediate", "Intermediate"),("Diploma", "Diploma"), ("Master", "Master"), ("PHD", "PHD"))
     gender = models.CharField(max_length=10, choices=gender_choice, default=True)
@@ -26,6 +25,7 @@ class Profile(models.Model):
     bio = models.TextField(max_length=500, blank=True)
     location = models.CharField(max_length=30, blank=True)
     birth_date = models.DateField(null=True, blank=True)
+    
 
     def __str__(self):
         return f' { self.user } Profile'
@@ -53,6 +53,6 @@ class ResultsPredictions(models.Model):
     time = models.CharField(max_length=50)
 
 
-class reporting(models.Model):
-    user_profile = models.OneToOneField(Profile,on_delete=models.CASCADE)
-    user_result = models.OneToOneField(ResultsPredictions,on_delete=models.CASCADE)
+class reporting(Profile,ResultsPredictions):
+    user_profile = models.OneToOneField(Profile,on_delete=models.CASCADE, parent_link=True)
+    user_result = models.OneToOneField(ResultsPredictions,on_delete=models.CASCADE, parent_link=True)
