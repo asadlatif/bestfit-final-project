@@ -2,9 +2,9 @@ from django import forms
 from django.contrib.auth.forms import User
 from django.contrib.auth.forms import UserCreationForm
 from .models import Profile
-from .models import Feedbackk
+from .models import Feedbackk, reporting
 from bestfit import settings
-from django.forms.widgets import DateInput
+from django.forms.widgets import DateInput,Textarea
 
 
 class UserSignupForm(UserCreationForm):
@@ -33,12 +33,24 @@ class ProfileUpdateForm(forms.ModelForm):
         widgets = {
         'birth_date': DateInput(attrs={'type': 'date'})
     }
+        labels = {
+            'bio': ('bio'),
+            }
+        widgets = {
+            'bio': Textarea(attrs={'rows': 3})
+    }
 
 
 class FeedbackForm(forms.ModelForm):
     class Meta:
         model = Feedbackk
-        fields = ['name','email','phone','Feedback']
+        fields = ['name','email','phone', 'Feedback']
+        labels = {
+            'Feedback': ('Give us your feedback'),
+        }
+        widgets = {
+        'Feedback': Textarea(attrs={'rows': 3})
+    }
 
 # class UserResultForm(forms.ModelForm):
 #     class Meta:
@@ -50,5 +62,10 @@ class FeedbackForm(forms.ModelForm):
 #     class Meta:
 #         model = Results
 #         fields = ['attempt_correct', 'time']
+
+class ReportingForm(forms.ModelForm):
+    class Meta:
+        model = reporting
+        fields = '__all__'
 
         

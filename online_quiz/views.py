@@ -3,9 +3,9 @@ from django.contrib.auth.models import User
 from django.contrib.auth.decorators import login_required
 from django.views.generic import TemplateView
 from django.contrib.auth.mixins import LoginRequiredMixin
-from .models import Test,Feedbackk
+from .models import Test,Feedbackk,reporting
 from django.contrib import messages
-from .forms import UserSignupForm, UserUpdateForm,FeedbackForm, ProfileUpdateForm
+from .forms import UserSignupForm, UserUpdateForm,FeedbackForm, ProfileUpdateForm, ReportingForm
 
 def home(request):
     count = User.objects.count()
@@ -85,15 +85,19 @@ def profile(request):
         p_form = ProfileUpdateForm(request.POST,
                                    request.FILES,
                                    instance=request.user.profile)
+        r_form = ReportingForm(request.POST,
+                                   request.FILES,
+                                   instance=request.user.profile)
         if u_form.is_valid() and p_form.is_valid():
             u_form.save()
             p_form.save()
+            r_form.save()
             messages.success(request, f'Your account has been updated!')
             return redirect('profile')
     else:
         u_form = UserUpdateForm(instance=request.user)
         p_form = ProfileUpdateForm(instance=request.user.profile)
-
+        r_form = ReportingForm(instance=request.user.profile)
     context = {
         'u_form': u_form,
         'p_form': p_form
