@@ -66,7 +66,7 @@
     </div>
     <div class="col-xs-2">
       {% if test.id == length %}
-      <button type="submit" class="btn btn-success" onclick="savetimmer()">Result</button>
+      <button type="submit" class="btn btn-success" id="hold" onclick="savetimmer({{test.id}})">Result</button>
       {% else %}
       <button type="submit" class="btn btn-success" id="result" disabled>Result</button>
       {% endif %} 
@@ -97,10 +97,11 @@ var local,anstime,clock,counter=0,timetaken=0,i
           clearInterval(clock);
       }
   }
-  function savetimmer(){
+  function savetimmer(id){ 
+      answertime(id); 
+      console.log(time); 
       clearInterval(clock);
-      localStorage.clear();
-      console.log(time);
+      //localStorage.clear();
   }
 
   
@@ -129,17 +130,16 @@ var mytime = [],sz,ele,useranswer;
     atime = convertSecond(timetaken);
     useranswer = document.getElementsByClassName('option');
 
-for (var i=0, len=useranswer.length; i<len; i++) {
-  if(useranswer[i].checked)
-    ele = useranswer[i].value;
-}
-     console.log(ele);
+    for (var i=0, len=useranswer.length; i<len; i++) {
+      if(useranswer[i].checked)
+        ele = useranswer[i].value;
+    }
+     
+      localStorage.setItem('answer', ele);
       localStorage.setItem('time', atime);
       localStorage.setItem('questionId', id );
       
-      //timet[i] = timet.push(atime);
-      //i = i + 1;
-      //console.log(myJSON);
+   
       clearInterval(ans);
       timetaken = 0;
       anstime = setInterval(ansclock,1000);
@@ -147,17 +147,21 @@ for (var i=0, len=useranswer.length; i<len; i++) {
 
 console.log(localStorage.getItem('time'));
 console.log(localStorage.getItem('questionId'));
-console.log(localStorage.getItem('Answer'));
+console.log(localStorage.getItem('answer'));
 
-//   jQuery('a.external').on('click', function(event){
-//     event.preventDefault();
-//     var href = jQuery(this).attr('href');
-//     setTimeout(function(){
-//         window.location = href;
-//     }, 3000);
+// $('#myButton').click(function(){
+//   var t =localStorage['time'];
+//   var q =localStorage['questionId'];
+//   var a =localStorage['answer'];
 
-
-//  });
+//   $.ajax({
+//     url: "/poll/score/",
+//     type:"GET",
+//     data: {t:t,q:q,a:a,userid:userid}
+//   }).done(function(data){
+//      alert(data);//do what you want to do with response
+//   });
+// }); 
 
 
 
