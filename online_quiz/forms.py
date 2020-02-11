@@ -23,7 +23,7 @@ class UserUpdateForm(forms.ModelForm):
 
 
 class ProfileUpdateForm(forms.ModelForm):
-    #birth_date = forms.DateField(input_formats=settings.DATE_INPUT_FORMATS)
+    
     class Meta:
         model = Profile
         fields = [ 'birth_date','bio', 'location','gender', 'image']
@@ -32,12 +32,6 @@ class ProfileUpdateForm(forms.ModelForm):
         }
         widgets = {
         'birth_date': DateInput(attrs={'type': 'date'})
-    }
-        labels = {
-            'bio': ('bio'),
-            }
-        widgets = {
-            'bio': Textarea(attrs={'rows': 3})
     }
 
 
@@ -51,17 +45,6 @@ class FeedbackForm(forms.ModelForm):
         widgets = {
         'Feedback': Textarea(attrs={'rows': 3})
     }
-
-# class UserResultForm(forms.ModelForm):
-#     class Meta:
-#         model = User
-#         fields = ['first_name', 'last_name']
-
-# class ResultUpdateForm(UserResultForm):
-
-#     class Meta:
-#         model = Results
-#         fields = ['attempt_correct', 'time']
 
 class ReportingForm(forms.ModelForm):
     class Meta:
