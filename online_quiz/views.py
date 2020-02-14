@@ -7,6 +7,7 @@ from .models import Test,Feedbackk,reporting
 from django.contrib import messages
 from .forms import UserSignupForm, UserUpdateForm,FeedbackForm, ProfileUpdateForm, ReportingForm
 
+
 def home(request):
     count = User.objects.count()
     return render(request, 'home.html', {
@@ -45,6 +46,8 @@ def test_page(request, myid):
     length = len(q)
     return render(request,'General_knowledge.html', { 'Test':question,'length': length})  
 
+
+
 def result(request):
     print("result page")
     if request.method == 'POST':
@@ -66,9 +69,6 @@ def result(request):
         for i in range(total):
             if ans[i] == qans[i]:
                 score += 1
-        # print(qid)
-        # print(qans)
-        # print(ans)
         print(score)
         eff = (score/total)*100
     return render(request,

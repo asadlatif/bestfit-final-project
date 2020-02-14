@@ -14,6 +14,8 @@ class Test(models.Model):
     option_4 = models.CharField(max_length=255)
     answer = models.CharField(max_length=255, default=None) 
 
+
+
 class Profile(models.Model):
     user = models.OneToOneField(User, primary_key=True,on_delete=models.CASCADE)
     gender_choice = (("Male", "Male"), ("Female", "Female"),("other", "other"))
@@ -52,6 +54,10 @@ class ResultsPredictions(models.Model):
     attempt_correct = models.CharField(max_length=100)
     time = models.CharField(max_length=50)
 
+class answertime(models.Model):
+    ques_id = models.AutoField(primary_key = True)
+    selectedoption = models.CharField(max_length=1000)
+    timetaken = models.IntegerField(max_length=500)
 
 class reporting(Profile,ResultsPredictions):
     user_profile = models.OneToOneField(Profile,on_delete=models.CASCADE, parent_link=True)

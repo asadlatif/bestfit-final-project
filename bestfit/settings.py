@@ -30,7 +30,15 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'django.contrib.sites',
+    'allauth',
+    'allauth.account',
+    'allauth.socialaccount',
+    'allauth.socialaccount.providers.google',
+    'allauth.socialaccount.providers.facebook',
 ]
+
+SITE_ID = 1
 
 CRISPY_TEMPLATE_PACK = 'bootstrap4'
 
@@ -123,5 +131,8 @@ MEDIA_URL = '/media/'
 LOGIN_REDIRECT_URL = 'home'
 LOGOUT_REDIRECT_URL = 'home'
 LOGIN_URL = 'login'
+
+# SOCIAL_AUTH_LOGIN_REDIRECT_URL = '/home/'
+# SOCIAL_AUTH_LOGIN_URL = '/'
 
 DATE_INPUT_FORMATS = ['%d-%m-%Y']

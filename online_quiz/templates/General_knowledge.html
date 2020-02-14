@@ -48,7 +48,7 @@
     </h4>
   <br>
     {% if test.id == length  %}
-    <a class="btn btn-success disabled" id="next" href="/test/{{test.id|add:1}}" >Next</a>
+    <a class="btn btn-success disabled" href="/test/{{test.id|add:1}}" >Next</a>
     {% else %} 
     <a class="btn btn-success external" id="next" href="/test/{{test.id|add:1}}" onclick="answertime({{test.id}})">Next</a>
     {% endif %}
@@ -83,7 +83,7 @@
 {% block js %}
 <script type ="text/javascript">
 
-
+//overall timming
 var local,anstime,clock,counter=0,timetaken=0,i
   clock = setInterval(timeclock,1000);
 
@@ -104,6 +104,7 @@ var local,anstime,clock,counter=0,timetaken=0,i
       //localStorage.clear();
   }
 
+//question time
   
   var ans = setInterval(ansclock,1000);
 
@@ -126,6 +127,8 @@ var local,anstime,clock,counter=0,timetaken=0,i
 }
 var mytime = [],sz,ele,useranswer;
 
+
+
   function answertime(id){
     atime = convertSecond(timetaken);
     useranswer = document.getElementsByClassName('option');
@@ -134,35 +137,17 @@ var mytime = [],sz,ele,useranswer;
       if(useranswer[i].checked)
         ele = useranswer[i].value;
     }
-     
+     //store selcted answer question id and thier time
       localStorage.setItem('answer', ele);
       localStorage.setItem('time', atime);
       localStorage.setItem('questionId', id );
-      
-   
       clearInterval(ans);
       timetaken = 0;
       anstime = setInterval(ansclock,1000);
   }
-
 console.log(localStorage.getItem('time'));
 console.log(localStorage.getItem('questionId'));
 console.log(localStorage.getItem('answer'));
-
-// $('#myButton').click(function(){
-//   var t =localStorage['time'];
-//   var q =localStorage['questionId'];
-//   var a =localStorage['answer'];
-
-//   $.ajax({
-//     url: "/poll/score/",
-//     type:"GET",
-//     data: {t:t,q:q,a:a,userid:userid}
-//   }).done(function(data){
-//      alert(data);//do what you want to do with response
-//   });
-// }); 
-
 
 
 </script>

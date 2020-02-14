@@ -1,8 +1,6 @@
 from django.contrib import admin
 from .models import Test, Profile, Feedbackk, reporting, ResultsPredictions
-# from django.contrib.auth.models import Group
 from django.urls import path
-#from django.utils.html import format_html 
 
 class TestAdmin(admin.ModelAdmin):
     list_display = (
@@ -66,18 +64,14 @@ class reportingAdmin(admin.ModelAdmin):
         'gender'
         )
 
-# class questionAdmin(admin.ModelAdmin):
-#     list_filter = ('qustion', 'answer')
 
 admin.site.register(Test, TestAdmin)
 admin.site.register(Profile, ProfileAdmin)
 admin.site.register(Feedbackk)
 admin.site.register(reporting, reportingAdmin)
-# admin.site.register(proField)
 admin.site.register(ResultsPredictions)
-# # admin.site.site_header = 'BestFit Organization'
-# admin.site.index_title = 'BestFit Administration'
-# admin.site.site_title = 'Admin pannel of bestfit organization'
-# admin.site.index_template = 'admin/index_template.html'
+admin.site.site_header = 'BestFit Organization'
+admin.site.index_title = 'BestFit Administration'
+admin.site.site_title = 'Admin pannel of bestfit organization'
 
 

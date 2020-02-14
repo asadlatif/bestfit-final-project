@@ -17,9 +17,11 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('feedback/', views.feedback, name= 'feedback'),
     path('test/<int:myid>', views.test_page, name= 'test'),
+    #path('check/', views.check, name= 'check'),
     path('result/', views.result, name= 'result'),
     path('profile/', views.profile, name='profile'),
     path('profileEdit/', views.profileEdit, name='profileEdit'),
+    path('accounts/', include('allauth.urls')),
 ]
 
 if settings.DEBUG:
