@@ -1,7 +1,7 @@
 {% extends 'base.html' %}
 {% block title %} Test {% endblock %}
 {% block content %}
-
+<div class="page-content">
 <span id = "timer" style="float: right;">
 </span>
 <form action="../result/" method="post" class="demoForm">{% csrf_token %}
@@ -77,6 +77,7 @@
   
  
 </form>
+</div>
 {% endblock %}
 
 

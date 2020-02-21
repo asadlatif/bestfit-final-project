@@ -1,92 +1,209 @@
-<!doctype html>
+
+<!DOCTYPE html>
+<!--[if IE 8]> <html lang="en" class="ie8 no-js"> <![endif]-->
+<!--[if IE 9]> <html lang="en" class="ie9 no-js"> <![endif]-->
+<!--[if !IE]><!-->
 <html lang="en">
-<head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
-  <title>{% block title %}BestFit{% endblock %}</title>
-  <style type="text/css">
-    .asteriskField {
-      display: none;
-    }
+    <!--<![endif]-->
+    <!-- BEGIN HEAD -->
+{% load static %}
+    <head>
+        <meta charset="utf-8" />
+        <title>{% block title %}{% endblock %} | Best Fit</title>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta content="width=device-width, initial-scale=1" name="viewport" />
+        <meta content="" name="description" />
+        <meta content="" name="author" />
+        <!-- BEGIN GLOBAL MANDATORY STYLES -->
+        <link href="http://fonts.googleapis.com/css?family=Open+Sans:400,300,600,700&subset=all" rel="stylesheet" type="text/css" />
+        <link href=" {% static 'bestfit/assets/global/plugins/font-awesome/css/font-awesome.min.css '%}" rel="stylesheet" type="text/css" />
+        <link href=" {% static 'bestfit/assets/global/plugins/simple-line-icons/simple-line-icons.min.css' %}" rel="stylesheet" type="text/css" />
+        <link href=" {% static 'bestfit/assets/global/plugins/bootstrap/css/bootstrap.min.css' %}" rel="stylesheet" type="text/css" />
+        <link href=" {% static 'bestfit/assets/global/plugins/bootstrap-switch/css/bootstrap-switch.min.css' %}" rel="stylesheet" type="text/css" />
+        <!-- END GLOBAL MANDATORY STYLES -->
+        <!-- BEGIN PAGE LEVEL PLUGINS -->
+        <link href=" {% static 'bestfit/assets/global/plugins/bootstrap-fileinput/bootstrap-fileinput.css' %}" rel="stylesheet" type="text/css" />
+        <!-- END PAGE LEVEL PLUGINS -->
+        <!-- BEGIN THEME GLOBAL STYLES -->
+        <link href=" {% static 'bestfit/assets/global/css/components.min.css' %}" rel="stylesheet" id="style_components" type="text/css" />
+        <link href=" {% static 'bestfit/assets/global/css/plugins.min.css' %}" rel="stylesheet" type="text/css" />
+        <!-- END THEME GLOBAL STYLES -->
+        <!-- BEGIN PAGE LEVEL STYLES -->
+        <link href=" {% static 'bestfit/assets/pages/css/profile.min.css' %}" rel="stylesheet" type="text/css" />
+        <!-- END PAGE LEVEL STYLES -->
+        <!-- BEGIN THEME LAYOUT STYLES -->
+        <link href=" {% static 'bestfit/assets/layouts/layout5/css/layout.min.css' %}" rel="stylesheet" type="text/css" />
+        <link href=" {% static 'bestfit/assets/layouts/layout5/css/custom.min.css' %}" rel="stylesheet" type="text/css" />
+        <!-- END THEME LAYOUT STYLES -->
+        <link rel="shortcut icon" href="favicon.ico" />
+        {%block head_block%}
+        {% endblock%}
+    </head>
+    <!-- END HEAD -->
 
-    form .alert ul li {
-      list-style: none;
-    }
+    <body class="page-header-fixed page-header-fixed-mobile page-sidebar-closed-hide-logo">
+        <!-- BEGIN CONTAINER -->
+      +  <div class="wrapper">
+            <!-- BEGIN HEADER -->
+            <header class="page-header">
+                <nav class="navbar mega-menu" role="navigation">
+                    <div class="container-fluid">
+                        <div class="clearfix navbar-fixed-top">
+                            <!-- Brand and toggle get grouped for better mobile display -->
+                            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-responsive-collapse">
+                                <span class="sr-only">Toggle navigation</span>
+                                <span class="toggle-icon">
+                                    <span class="icon-bar"></span>
+                                    <span class="icon-bar"></span>
+                                    <span class="icon-bar"></span>
+                                </span>
+                            </button>
+                            <!-- End Toggle Button -->
+                            <!-- BEGIN LOGO -->
+                            <a id="index" class="page-logo" href="#">
+                                <img src=" {% static 'assets/layouts/layout5/img/logo.png' %}" alt="Logo"> </a>
+                            <!-- END LOGO -->
+                            {% if user.is_authenticated %}
+                            <!-- BEGIN TOPBAR ACTIONS -->
+                            <div class="topbar-actions">
+                                <!-- BEGIN USER PROFILE -->
+                                <div class="btn-group-img btn-group">
+                                    <button type="button" class="btn btn-sm md-skip dropdown-toggle" data-toggle="dropdown" data-hover="dropdown" data-close-others="true">
+                                        <span>Hi, {{ user.username }}</span>
+                                        <img src="{{ user.profile.image.url }}" alt=""> </button>
+                                    <ul class="dropdown-menu-v2" role="menu">
+                                        <li>
+                                            <a href="{% url 'profile' %}">
+                                                <i class="icon-user"></i> My Profile
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="{% url 'secret' %}">
+                                                <i class="icon-volume-2"></i> test your Intelligence </a>
+                                        </li>
+                                        <li>
+                                            <a href="{% url 'secret2' %}">
+                                                <i class="icon-bulb"></i> report
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="{% url 'feedback' %}">
+                                                <i class="icon-feed"></i> Feedback
+                                            </a>
+                                        </li>
+                                        
+                                        <li>
+                                            <a href="{% url 'logout' %}">
+                                                <i class="icon-key"></i> Log Out </a>
+                                        </li>
+                                    </ul>
+                                </div>
+                                <!-- END USER PROFILE -->
+                            </div>
+                           
+                            <!-- END TOPBAR ACTIONS -->
+                        </div>
+                        <!-- BEGIN HEADER MENU -->
+                        <div class="nav-collapse collapse navbar-collapse navbar-responsive-collapse">
+                            <ul class="nav navbar-nav">
+                              <li class="dropdown dropdown-fw dropdown-fw-disabled active open selected  ">
+                                <a href="{% url 'home' %}" class="text-uppercase">
+                                    <i class="icon-home"></i> Home
+                                </a>
+                            </li>
+                                <li class="dropdown dropdown-fw dropdown-fw-disabled">
+                                    <a href="{% url 'profile' %}" class="text-uppercase">
+                                        <i class="icon-user"></i> Profile
+                                    </a>
+                                </li>
+                                <li class="dropdown dropdown-fw dropdown-fw-disabled  ">
+                                    <a href="{% url 'secret' %}" class="text-uppercase">
+                                        <i class="icon-volume-2"></i>Test your Intelligence
+                                    </a>
+                                </li>
+                                <li class="dropdown dropdown-fw dropdown-fw-disabled  ">
+                                    <a href="{% url 'secret2' %}" class="text-uppercase">
+                                        <i class="icon-bulb"></i> Report
+                                    </a>
+                                </li>
+                                <li class="dropdown dropdown-fw dropdown-fw-disabled">
+                                    <a href="{% url 'feedback' %}" class="text-uppercase">
+                                        <i class="icon-feed"></i> Feedback
+                                    </a>
+                                </li>
+                                
+                            </ul>
+                        </div>
+                        <!-- END HEADER MENU -->
+                    </div>
+                    {% else %}
+                    <div class="nav-collapse collapse navbar-collapse navbar-responsive-collapse">
+                      <ul class="nav navbar-nav">
+                        <li class="dropdown dropdown-fw dropdown-fw-disabled active open selected  ">
+                            <a href="{% url 'home' %}" class="text-uppercase">
+                                <i class="icon-home"></i> Home
+                            </a>
+                        </li>
+                          <li class="dropdown dropdown-fw dropdown-fw-disabled ">
+                              <a href="{% url 'login' %}" class="text-uppercase">
+                                  <i class="icon-user"></i> LogIn
+                              </a>
+                          </li>
+                          <li class="dropdown dropdown-fw dropdown-fw-disabled">
+                            <a href="{% url 'signup' %}" class="text-uppercase">
+                                <i class="icon-user"></i> Sign Up
+                            </a>
+                        </li>
+                    </ul>
+                    
+                    </div>
+                  
+                  {% endif %}
+                    <!--/container-->
+                </nav>
+            </header>
+            <div class="container-fluid">
+                {% block content %}
 
-    form .alert ul {
-      padding: 0;
-      margin: 0;
-    }
-  </style>
-</head>
-<body>
-  <nav class="navbar navbar-expand-lg navbar-light bg-light mb-4">
-    <div class="container">
-      <a class="navbar-brand" href="{% url 'home' %}">BestFit</a>
-      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-      </button>
 
-      <div class="collapse navbar-collapse" id="navbarSupportedContent">
-        <ul class="navbar-nav mr-auto">
-          <li class="nav-item">
-            <a class="nav-link" href="{% url 'home' %}">Home</a>
-          </li>
-          {% if messages %}
-            {% for message in messages %}
-              <div class="alert alert-{{ message.tags}}">
-                {{ message }}
-              </div>
-            {% endfor%}
-          {% endif %}
-          {% if user.is_authenticated %}
-            <li class="nav-item">
-              <a class="nav-link" href="{% url 'profile' %}">profile</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="{% url 'secret' %}">Testing Your intelligence</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="{% url 'secret2' %}">Reports</a>
-            </li>
-          <!-- <li class="nav-item">
-              <a class="nav-link" href="/test/1">Test</a>
-            </li> -->
-            <li class="nav-item">
-              <a class="nav-link" href="{% url 'feedback' %}">Give your Feedback</a>
-            </li>
-          {% endif %}
-        </ul>
-        {% if user.is_authenticated %}
-          <ul class="navbar-nav">
-            <li class="nav-item dropdown">
-              <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                {{ user.username }}
-              </a>
-              <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-                <a class="dropdown-item" href="{% url 'password_change' %}">Change password</a>
-                <div class="dropdown-divider"></div>
-                <a class="dropdown-item" href="{% url 'logout' %}">Log out</a>
-              </div>
-            </li>
-          </ul>
-        {% else %}
-          <form class="form-inline my-2 my-lg-0">
-            <a href="{% url 'login' %}" class="btn btn-outline-secondary">Log in</a>
-            <a href="{% url 'signup' %}" class="btn btn-primary ml-2">Sign up</a>
-          </form>
-        {% endif %}
-      </div>
-    </div>
-  </nav>
+                {% endblock %}
 
-  <div class="container">
-    {% block content %}
-    {% endblock %}
-  </div>
-  {% block js %}
-  {% endblock %}
+                  <!-- BEGIN FOOTER -->
+                <p class="copyright">   &copy; All Rights Reserved.
+                </p>
+                <a href="/" class="go2top">
+                    <i class="icon-arrow-up"></i>
+                </a>
+                <!-- END FOOTER -->
+            </div>
+            <!-- END HEADER -->
 
-</body>
+        </div>
+        <!-- END CONTAINER -->
+
+       
+        <!-- BEGIN CORE PLUGINS -->
+        <script src=" {% static 'bestfit/assets/global/plugins/jquery.min.js' %}" type="text/javascript"></script>
+        <script src=" {% static 'bestfit/assets/global/plugins/bootstrap/js/bootstrap.min.js' %}" type="text/javascript"></script>
+        <script src=" {% static 'bestfit/assets/global/plugins/js.cookie.min.js' %}" type="text/javascript"></script>
+        <script src=" {% static 'bestfit/assets/global/plugins/jquery-slimscroll/jquery.slimscroll.min.js' %}" type="text/javascript"></script>
+        <script src=" {% static 'bestfit/assets/global/plugins/jquery.blockui.min.js' %}" type="text/javascript"></script>
+        <script src=" {% static 'bestfit/assets/global/plugins/bootstrap-switch/js/bootstrap-switch.min.js' %}" type="text/javascript"></script>
+        <!-- END CORE PLUGINS -->
+        <!-- BEGIN PAGE LEVEL PLUGINS -->
+        <script src=" {% static 'bestfit/assets/global/plugins/bootstrap-fileinput/bootstrap-fileinput.js' %}" type="text/javascript"></script>
+        <script src=" {% static 'bestfit/assets/global/plugins/jquery.sparkline.min.js' %}" type="text/javascript"></script>
+        <!-- END PAGE LEVEL PLUGINS -->
+        <!-- BEGIN THEME GLOBAL SCRIPTS -->
+        <script src=" {% static 'bestfit/assets/global/scripts/app.min.js' %}" type="text/javascript"></script>
+        <!-- END THEME GLOBAL SCRIPTS -->
+        <!-- BEGIN PAGE LEVEL SCRIPTS -->
+        <script src=" {% static 'bestfit/assets/pages/scripts/profile.min.js' %}" type="text/javascript"></script>
+        <!-- END PAGE LEVEL SCRIPTS -->
+        <!-- BEGIN THEME LAYOUT SCRIPTS -->
+        <script src=" {% static 'bestfit/assets/layouts/layout5/scripts/layout.min.js' %}" type="text/javascript"></script>
+        <script src=" {% static 'bestfit/assets/layouts/global/scripts/quick-sidebar.min.js' %}" type="text/javascript"></script>
+        <!-- END THEME LAYOUT SCRIPTS -->
+    </body>
+
 </html>

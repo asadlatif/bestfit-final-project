@@ -1,7 +1,9 @@
 {% extends 'base.html' %}
-
+{% block title %}Home{% endblock %}
 {% block content %}
 
+<div class="page-content">
+  <br><br><br>
   <h2>Welcome to BestFit</h2>
   <b>Right Person For Right Place! </b>
   <p>Mr.
@@ -9,4 +11,6 @@
   {% else %}visitor
   {% endif %}!
 </p>
+</div>
+
 {% endblock %}
