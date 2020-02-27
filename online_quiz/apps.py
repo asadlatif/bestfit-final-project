@@ -6,3 +6,4 @@ class OnlineQuizConfig(AppConfig):
 
     def ready(self):
         import online_quiz.signals
+

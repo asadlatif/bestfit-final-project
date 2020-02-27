@@ -57,7 +57,7 @@ class ResultsPredictions(models.Model):
 class answertime(models.Model):
     ques_id = models.AutoField(primary_key = True)
     selectedoption = models.CharField(max_length=1000)
-    timetaken = models.IntegerField(max_length=500)
+    timetaken = models.IntegerField()
 
 class reporting(Profile,ResultsPredictions):
     user_profile = models.OneToOneField(Profile,on_delete=models.CASCADE, parent_link=True)
