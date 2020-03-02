@@ -23,8 +23,6 @@ ALLOWED_HOSTS = []
 INSTALLED_APPS = [
     'online_quiz.apps.OnlineQuizConfig',
     'crispy_forms',
-    'suit',
-    #'bestfit.apps.MyAdminConfig',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
