@@ -1,27 +1,219 @@
-{% extends "base.html" %}
+{%extends "base.html" %}
 {% load crispy_forms_tags %}
 {% block title %} Profile {% endblock %}
 {% block content %}
 <div class="page-content">
-<div class="content-section">
-  <div class="media">
-    <img class="rounded-circle account-img" src="{{ user.profile.image.url }}" width="150" height="150">
-    <div class="media-body">
-      <h2 class="account-heading">{{ user.username }}</h2>
-      <p class="text-secondary">{{ user.email }}</p>
-    </div>
-  </div>
-  <form method="post" enctype="multipart/form-data">
-      {% csrf_token %}
-      <fieldset class="form-group">
-          <legend class="border-bottom md-4">Profile info</legend>
-          {{ u_form|crispy }}
-          {{ p_form|crispy }}
-      </fieldset>
-      <div class="form-group">
-          <button type="submit" class="btn btn-primary">Update</button>
-      </div>
-  </form>
-</div>
-</div>
-{% endblock content %}
+                    <!-- BEGIN BREADCRUMBS -->
+                    <div class="breadcrumbs breadcrumbsRibbon">
+                        <div class="col-sm-8">
+                            <div class="mt-element-ribbon bg-grey-steel">
+                                <div class="ribbon ribbon-vertical-left ribbon-border-vert ribbon-color-success uppercase">
+                                    <i class="fa fa-user"></i>
+                                </div>
+                                <h2 class="ribbon-content">CANDIDATE PROFILE</h2>
+                            </div>
+                        </div>
+                        <div class="col-sm-4">
+                            <ol class="breadcrumb">
+                                <li>
+                                    <a href="#">Home</a>
+                                </li>
+                                <li>
+                                    <a href="#">Profile</a>
+                                </li>
+                            </ol>
+                        </div>
+                    </div>
+                    <!-- END BREADCRUMBS -->
+                    <!-- BEGIN SIDEBAR CONTENT LAYOUT -->
+                    <div class="page-content-container">
+                        <div class="page-content-row">
+                            <div class="page-content-col">
+                                <!-- BEGIN PAGE BASE CONTENT -->
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <!-- BEGIN PROFILE SIDEBAR -->
+                                        <div class="profile-sidebar">
+                                            <!-- PORTLET MAIN -->
+                                            <div class="portlet light profile-sidebar-portlet bordered">
+                                                <!-- SIDEBAR USERPIC -->
+                                                <div class="profile-userpic">
+                                                    <img src="" class="img-responsive" alt=""> </div>
+                                                <!-- END SIDEBAR USERPIC -->
+                                                <!-- SIDEBAR USER TITLE -->
+                                                <div class="profile-usertitle">
+                                                    <img class="rounded-circle account-img" src="{{ user.profile.image.url }}" width="150" height="150">
+                                                    <div class="profile-usertitle-name"> {{ user.username }} </div>
+                                                    <div class="profile-usertitle-job">  {{ user.email }}  </div>
+                                                </div>
+                                                <!-- END SIDEBAR USER TITLE -->
+                                                <!-- SIDEBAR MENU -->
+                                                <div class="profile-usermenu">
+                                                    <ul class="nav">
+                                                        <li class="active">
+                                                            <a href="page_user_profile_1">
+                                                            <i class="icon-home"></i> Profile Overview </a>
+                                                        </li>
+                                                        <li>
+                                                            <a href="/profileEdit">
+                                                            <i class="icon-settings"></i> Profile Settings </a>
+                                                        </li>
+                                                    </ul>
+                                                </div>
+                                                <!-- END MENU -->
+                                            </div>
+                                            <!-- END PORTLET MAIN -->
+                                        </div>
+                                        <!-- END BEGIN PROFILE SIDEBAR -->
+                                        <!-- BEGIN PROFILE CONTENT -->
+                                        <div class="profile-content profilePage">
+                                            <div class="row">
+                                                <div class="col-md-12">
+                                                    <div class="portlet light bordered">
+                                                        <div class="portlet-title">
+                                                            <div class="caption">
+                                                                <i class="fa fa-user-plus" style="color: #4cb7b6;margin-top: 2px;"></i>
+                                                                <span class="caption-subject font-green-haze bold uppercase">User Profile Overview</span>
+                                                            </div>
+                                                            <div class="tools">
+                                                                <a href="" class="collapse" data-original-title="" title=""> </a>
+                                                                <a href="profileEdit" class="config" data-original-title="" title="Edit"> </a>
+                                                                <a href="" class="reload" data-original-title="" title=""> </a>
+                                                            </div>
+                                                        </div>
+                                                        <div class="portlet-body form" style="display: block;">
+                                                            <!-- BEGIN FORM-->
+                                                            <form class="form-horizontal" role="form">
+                                                                <div class="form-body">
+                                                                    <h2 class="margin-bottom-20"> User Info - {{user.username}} </h2>
+                                                                    <h3 class="form-section">Person Info</h3>
+                                                                    <div class="row">
+                                                                        <div class="col-md-6">
+                                                                            <div class="form-group">
+                                                                                <label class="control-label col-md-3">First Name:</label>
+                                                                                <div class="col-md-9">
+                                                                                    <p class="form-control-static"> {{ pro.first_name }} </p>
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+                                                                        <!--/span-->
+                                                                        <div class="col-md-6">
+                                                                            <div class="form-group">
+                                                                                <label class="control-label col-md-3">Last Name:</label>
+                                                                                <div class="col-md-9">
+                                                                                    <p class="form-control-static"> {{ pro.last_name }} </p>
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+                                                                        <!--/span-->
+                                                                    </div>
+                                                                    <!--/row-->
+                                                                    <div class="row">
+                                                                        <div class="col-md-6">
+                                                                            <div class="form-group">
+                                                                                <label class="control-label col-md-3">Gender:</label>
+                                                                                <div class="col-md-9">
+                                                                                    <p class="form-control-static">{{ pro.gender }}</p>
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+                                                                        <!--/span-->
+                                                                        <div class="col-md-6">
+                                                                            <div class="form-group">
+                                                                                <label class="control-label col-md-3">Date of Birth:</label>
+                                                                                <div class="col-md-9">
+                                                                                    <p class="form-control-static"> {{user.birth}} </p>
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+                                                                        <!--/span-->
+                                                                    </div>
+                                                                    <!--/row-->
+                                                                    <div class="row">
+                                                                        <div class="col-md-6">
+                                                                            <div class="form-group">
+                                                                                <label class="control-label col-md-3">Education:</label>
+                                                                                <div class="col-md-9">
+                                                                                    <p class="form-control-static"> Graduation </p>
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+                                                                        <!--/span-->
+                                                                        <div class="col-md-6">
+                                                                            <div class="form-group">
+                                                                                <label class="control-label col-md-3">University:</label>
+                                                                                <div class="col-md-9">
+                                                                                    <p class="form-control-static"> SSUET </p>
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+                                                                        <!--/span-->
+                                                                    </div>
+                                                                    <!--/row-->
+                                                                    <h3 class="form-section">Address</h3>
+                                                                    <div class="row">
+                                                                        <div class="col-md-6">
+                                                                            <div class="form-group">
+                                                                                <label class="control-label col-md-3">Address:</label>
+                                                                                <div class="col-md-9">
+                                                                                    <p class="form-control-static"> {{user.address}} </p>
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="row">
+                                                                        <div class="col-md-6">
+                                                                            <div class="form-group">
+                                                                                <label class="control-label col-md-3">City:</label>
+                                                                                <div class="col-md-9">
+                                                                                    <p class="form-control-static"> {{user.llocation}} </p>
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+                                                                        <!--/span-->
+                                                                        <div class="col-md-6">
+                                                                            <div class="form-group">
+                                                                                <label class="control-label col-md-3">BIO</label>
+                                                                                <div class="col-md-9">
+                                                                                    <p class="form-control-static"> {{ user.bio }} </p>
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+                                                                        <!--/span-->
+                                                                    </div>
+                                                                    <!--/row-->
+                                                                </div>
+                                                                <div class="form-actions">
+                                                                    <div class="row">
+                                                                        <div class="col-md-12">
+                                                                            <div class="row">
+                                                                                <div class="col-md-12">
+                                                                                    <a href="/profileEdit" type="submit" class="btn green" style="float:right;">
+                                                                                        <i class="fa fa-pencil"></i> Edit
+                                                                                    </a>
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </form>
+                                                            <!-- END FORM-->
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <!-- END PROFILE CONTENT -->
+                                    </div>
+                                </div>
+                                <!-- END PAGE BASE CONTENT -->
+                            </div>
+                        </div>
+                    </div>
+                    <!-- END SIDEBAR CONTENT LAYOUT -->
+                </div>
+
+
+{% endblock %}
+
+

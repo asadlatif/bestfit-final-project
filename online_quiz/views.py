@@ -3,7 +3,7 @@ from django.contrib.auth.models import User
 from django.contrib.auth.decorators import login_required
 from django.views.generic import TemplateView
 from django.contrib.auth.mixins import LoginRequiredMixin
-from .models import Test,Feedbackk,reporting
+from .models import Test,Feedbackk,reporting,Profile
 from django.contrib import messages
 from .forms import UserSignupForm, UserUpdateForm,FeedbackForm, ProfileUpdateForm, ReportingForm
 
@@ -80,6 +80,7 @@ def result(request):
 
 @login_required
 def profile(request):
+    pro = Profile
     if request.method == 'POST':
         u_form = UserUpdateForm(request.POST, instance=request.user)
         p_form = ProfileUpdateForm(request.POST,
@@ -96,7 +97,8 @@ def profile(request):
 
     context = {
         'u_form': u_form,
-        'p_form': p_form
+        'p_form': p_form,
+        'pro': pro
     }
     return render(request, 'profile.html', context)
 
