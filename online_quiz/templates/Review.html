@@ -7,22 +7,91 @@
 {% block content%}
 
 <div class="page-content">
-  <div class="row center">
-    <div class="col-6">
-      <div class="card">
-        <div class="card-body">
-          <h2>Give us your Review</h2>
-          <form method="post" novalidate>
-            {% csrf_token %}
-            {{ form|crispy }}
-            <button type="submit" class="btn btn-primary">Submit</button>
-          </form>
-          
+  <!-- BEGIN BREADCRUMBS -->
+  <div class="breadcrumbs breadcrumbsRibbon" style="margin-bottom: 0;">
+<div class="col-sm-8">
+        <div class="mt-element-ribbon bg-grey-steel">
+            <div class="ribbon ribbon-vertical-left ribbon-border-vert ribbon-color-default uppercase">
+                <i class="fa fa-feed"></i>
+            </div>
+            <h2 class="ribbon-content">FEEDBACK</h2>
         </div>
-        
-      </div>
     </div>
-    
+    <div class="col-sm-4">
+        <ol class="breadcrumb">
+            <li>
+                <a href="#">Home</a>
+            </li>
+            <li>
+                <a href="#">Feedback</a>
+            </li>
+        </ol>
+    </div>
   </div>
+  <!-- END BREADCRUMBS -->
+  <!-- BEGIN SIDEBAR CONTENT LAYOUT -->
+  <div class="page-content-container">
+      <div class="page-content-row">
+          <div class="page-content-col feedbackPage">
+              <!-- BEGIN PAGE BASE CONTENT -->
+              <div class="row">
+                  <div class="col-md-12">
+                      <div class="portlet light portlet-fit">
+                          <div class="portlet-body">
+                              <div class="mt-element-step">
+                                  <div class="row step-line">
+                                      <div class="col-md-3 mt-step-col first done">
+                                          <div class="mt-step-number bg-white">
+                                              <i class="icon-user-following"></i>
+                                          </div>
+                                          <div class="mt-step-title uppercase font-grey-cascade">Profile</div>
+                                      </div>
+                                      <div class="col-md-3 mt-step-col active">
+                                          <div class="mt-step-number bg-white">
+                                              <i class="icon-grid"></i>
+                                          </div>
+                                          <div class="mt-step-title uppercase font-grey-cascade">Instructions</div>
+                                      </div>
+                                      <div class="col-md-3 mt-step-col error">
+                                          <div class="mt-step-number bg-white">
+                                              <i class="icon-rocket"></i>
+                                          </div>
+                                          <div class="mt-step-title uppercase font-grey-cascade">Sample Test</div>
+                                      </div>
+                                      <div class="col-md-3 mt-step-col last">
+                                          <div class="mt-step-number bg-white">
+                                              <i class="icon-basket-loaded"></i>
+                                          </div>
+                                          <div class="mt-step-title uppercase font-grey-cascade">Feedback</div>
+                                      </div>
+                                  </div>
+                              </div>
+                          </div>
+                      </div>
+                  </div>
+              </div>
+              <div class="col-md-12">
+                  <p class="feedDetails"> How Was </p>
+                  <div class="feedRibbon">
+                      <p>Your</p>
+                  </div>
+                  <p class="feedDetails"> experience?</p>
+              </div>
+              <div class="col-md-6 col-sm-4 col-xs-3">
+                  <div class="row">
+                      <div class="ffCenter">
+                          <input type="hidden" value="amo" class="prueba"/>
+                      </div>
+                  </div>
+              </div>
+              <div class="col-md-6 col-sm-8 col-xs-9">
+                  <a href="{% url 'back' %}"><span class="font-purple-sharp center"> submit your feedback. </span></a>
+              </div>
+              <!-- END PAGE BASE CONTENT -->
+          </div>
+      </div>
+  </div>
+  <!-- END SIDEBAR CONTENT LAYOUT -->
 </div>
+
 {% endblock %}

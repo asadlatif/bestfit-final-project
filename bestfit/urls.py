@@ -15,6 +15,7 @@ urlpatterns = [
     path('secret2/', views.SecretPage.as_view(), name='secret2'),
     path('accounts/', include('django.contrib.auth.urls')),
     path('admin/', admin.site.urls),
+    path('back/', views.back, name= 'back'),
     path('feedback/', views.feedback, name= 'feedback'),
     path('test/<int:myid>', views.test_page, name= 'test'),
     #path('check/', views.check, name= 'check'),

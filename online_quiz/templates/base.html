@@ -107,27 +107,27 @@
                         <div class="nav-collapse collapse navbar-collapse navbar-responsive-collapse">
                             <ul class="nav navbar-nav">
                               <li class="dropdown dropdown-fw dropdown-fw-disabled active open selected  ">
-                                <a href="{% url 'home' %}" class="text-uppercase">
+                                <a href="{% url 'home' %}" class="text-uppercase" onclick="active()">
                                     <i class="icon-home"></i> Home
                                 </a>
                             </li>
                                 <li class="dropdown dropdown-fw dropdown-fw-disabled">
-                                    <a href="{% url 'profile' %}" class="text-uppercase">
+                                    <a href="{% url 'profile' %}" class="text-uppercase" onclick="active()">
                                         <i class="icon-user"></i> Profile
                                     </a>
                                 </li>
-                                <li class="dropdown dropdown-fw dropdown-fw-disabled  ">
-                                    <a href="{% url 'secret' %}" class="text-uppercase">
+                                <li class="dropdown dropdown-fw dropdown-fw-disabled">
+                                    <a href="{% url 'secret' %}" class="text-uppercase" onclick="active()">
                                         <i class="icon-volume-2"></i>Test your Intelligence
                                     </a>
                                 </li>
-                                <li class="dropdown dropdown-fw dropdown-fw-disabled  ">
-                                    <a href="{% url 'secret2' %}" class="text-uppercase">
+                                <li class="dropdown dropdown-fw dropdown-fw-disabled">
+                                    <a href="{% url 'secret2' %}" class="text-uppercase" onclick="active()">
                                         <i class="icon-bulb"></i> Report
                                     </a>
                                 </li>
                                 <li class="dropdown dropdown-fw dropdown-fw-disabled">
-                                    <a href="{% url 'feedback' %}" class="text-uppercase">
+                                    <a href="{% url 'feedback' %}" class="text-uppercase" onclick="active()">
                                         <i class="icon-feed"></i> Feedback
                                     </a>
                                 </li>
@@ -204,6 +204,11 @@
         <script src=" /static/assets/layouts/layout5/scripts/layout.min.js" type="text/javascript"></script>
         <script src="/static/assets/layouts/global/scripts/quick-sidebar.min.js" type="text/javascript"></script>
         <!-- END THEME LAYOUT SCRIPTS -->
+        <script>
+            function active(){
+                console.log("active");
+            }
+        </script>
     </body>
 
 </html>

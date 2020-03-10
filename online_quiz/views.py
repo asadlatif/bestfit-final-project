@@ -106,18 +106,22 @@ def profile(request):
 def profileEdit(request):
     return render(request, 'profileEdit.html')
 
+
 def feedback(request):
+    return render(request, 'Review.html')
+
+def back(request):
     if request.method == 'POST':
         form = FeedbackForm(request.POST)
         if form.is_valid():
             form.save()
             messages.success(request, f'Your feedback has been Noted! Thanks for giving us your reviews!')
-            return redirect('feedback')
+            return redirect('back')
     else:
         form = FeedbackForm()
-    return render(request, 'Review.html', {
+    return render(request, 'fedbak.html', {
         'form': form
     })
-    return render(request, 'Review.html')
+    return render(request, 'fedbak.html')
 
 
